@@ -28,11 +28,14 @@ namespace ElGasCamion.Models
 
         public string DeviceID { get; set; }
 
-        public bool Habilitado { get; set; }
+        public bool? Habilitado { get; set; }
 
         public string FirebaseID { get; set; }
 
+        public int? IdSector { get; set; }
 
+        public string Direccion { get; set; }
 
+        public DateTime? FechaRegistro { get; set; }
     }
 }

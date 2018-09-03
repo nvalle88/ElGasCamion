@@ -1,25 +1,21 @@
-﻿using ElGasCamion.ViewModels;
+﻿using ElGasCamion.Models;
+using ElGasCamion.ViewModels;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 namespace ElGasCamion.Pages
 {
-	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class RegisterPage2 : ContentPage
-	{
-        RegisterViewModel ViewModels ;
+    [XamlCompilation(XamlCompilationOptions.Compile)]
+    public partial class RegisterPage2 : ContentPage
+    {
+        RegisterViewModel ViewModels;
 
-     
-        public RegisterPage2( Models.Cliente cliente)
-		{
-            ViewModels = new RegisterViewModel(cliente);
-            InitializeComponent ();
+
+        public RegisterPage2(Distribuidor distribuidor)
+        {
+            ViewModels = new RegisterViewModel(distribuidor);
+            InitializeComponent();
             BindingContext = ViewModels;
         }
 

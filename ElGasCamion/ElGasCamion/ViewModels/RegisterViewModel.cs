@@ -52,7 +52,7 @@ namespace ElGasCamion.ViewModels
                 return message;
             }
         }
-        public Cliente Cliente { get; set; }
+        public Distribuidor Distribuidor { get; set; }
 
         private bool isBusy = false;
         public bool IsBusy
@@ -177,39 +177,17 @@ namespace ElGasCamion.ViewModels
         #endregion
 
         #region Cosntructor
-        public RegisterViewModel(Cliente cliente)
+        public RegisterViewModel(Distribuidor distribuidor)
         {
-            //Ciudades = new List<Ciudad>
-            //{
-            //    new Ciudad("1", "Quito"),
-            //    new Ciudad("2", "Guayaquil"),
-            //    new Ciudad("3", "Cuenca")
-            //};
-
-            //Sectores = new List<Sector>
-            //{
-            //    new Sector("1","1" ,"Norte"),
-            //    new Sector("2","1", "Sur"),
-            //    new Sector("3","1", "Centro"),
-            //    new Sector("4","1","Los Chillos"),
-            //    new Sector("5","2" ,"Norte"),
-            //    new Sector("6","2", "Sur"),
-            //    new Sector("7","2", "Centro")
-
-            //};
-
             LoadCities();
             isError = false;
             IsError = false;
 
-            Cliente = cliente;
-            Username = cliente.Correo;
-            Password = cliente.Identificacion;
-            ConfirmPassword = cliente.Identificacion;
-
-            cliente.Identificacion = "";
-
-
+            Distribuidor = distribuidor;
+            Username = distribuidor.Correo;
+            Password = distribuidor.Identificacion;
+            ConfirmPassword = distribuidor.Identificacion;
+            distribuidor.Identificacion = "";
 
         }
         #endregion
@@ -224,12 +202,12 @@ namespace ElGasCamion.ViewModels
                     IsBusy = true;
                     if (Password == ConfirmPassword)
                     {
-                        Cliente.Direccion = String.Format("{0}, {1}, {2}, {3}", CalleUno, Numero, CalleDos, Sector);
-                        Cliente.Habilitado = true;
-                        Cliente.IdSector = SectorSeleccionado.IdSector;
+                        //Distribuidor. = String.Format("{0}, {1}, {2}, {3}", CalleUno, Numero, CalleDos, Sector);
+                        //Distribuidor.Habilitado = true;
+                        //Distribuidor.IdDistribuidor = SectorSeleccionado.IdSector;
 
-                        var isRegistered = await _apiServices.RegisterUserAsync
-                        (Username, Password, ConfirmPassword, Cliente);
+                        var isRegistered = true;//await _apiServices.RegisterUserAsync
+                        //(Username, Password, ConfirmPassword, Cliente);
 
 
                         IsBusy = false;
@@ -273,8 +251,7 @@ namespace ElGasCamion.ViewModels
             {
                 return new Command(async () =>
                 {
-                    //App.Current.MainPage = new NavigationPage(new RegisterPage2(Cliente));                     Application.Current.MainPage.Navigation.PushAsync(new RegisterPage2(Cliente));
-
+                  
                     if (IsAcceptPolicy)
                     {
                         if (Password != null && Password != "")
@@ -283,37 +260,31 @@ namespace ElGasCamion.ViewModels
                             {
                                 if (Password.Length > 3)
                                 {
-                                    Cliente.Correo = Username;
-                                    Cliente.Identificacion = Password;
-                                    App.Current.MainPage = new NavigationPage(new RegisterPage2(Cliente));
+                                    Distribuidor.Correo = Username;
+                                    Distribuidor.Identificacion = Password;
+                                    App.Current.MainPage = new NavigationPage(new RegisterPage2(Distribuidor));
                                 }
                                 else
                                 {
                                     await App.Current.MainPage.DisplayAlert("Error", "Las contraseña debe tener al menos 4 caracteres", "Aceptar");
 
                                 }
-
-
-
                             }
                             else
                             {
                                 await App.Current.MainPage.DisplayAlert("Error", "Las contraseñas no coinciden", "Aceptar");
                             }
-
                         }
                         else
                         {
                             await App.Current.MainPage.DisplayAlert("Error", "Todos los campos son obligatorios", "Aceptar");
 
                         }
-
                     }
                     else
                     {
                         await App.Current.MainPage.DisplayAlert("Error", "Debe haber leído y estar de acuerdo con los Términos y condiciones y las Políticas y tratamiento de datos personales", "Aceptar");
                     }
-
                 });
             }
         }
