@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ElGasCamion.Pages.MenuPage"
+             Title="Menú">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="7*" />
+            <RowDefinition Height="3*" />
+        </Grid.RowDefinitions>
+
+        <Image Source="splashLogo" Grid.Row="0" VerticalOptions="Start" HeightRequest="80"></Image>
+
+        <Button
+            Grid.Row="1"            
+            BackgroundColor="#0072C6"
+            Text="Salir"
+            TextColor="White"
+            BorderRadius="30"
+            VerticalOptions="Center"
+            FontFamily="calibril.ttf#Calibri Light"
+            FontSize="Large"
+            Command="{Binding LogoutCommand}"           
+           />
+    </Grid>
+</ContentPage>

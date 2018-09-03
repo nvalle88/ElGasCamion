@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             BackgroundColor="White"
+             x:Class="ElGasCamion.Pages.RecoveryPassPage">
+    <ContentPage.Content>
+        <Grid Margin="8,40,8,20"    BackgroundColor="White">
+
+            <Grid.RowDefinitions>
+
+                <RowDefinition Height="*" />
+      
+                <RowDefinition Height="*" />
+
+
+            </Grid.RowDefinitions>
+
+            <StackLayout  Grid.Row="0">
+                <Label Text="Ingrese el Emial registrado y enviaremos código de seguridad para reestablecer la contraseña"></Label>
+                <Entry  Placeholder="Email" 
+                    Keyboard="Email" 
+                    FontFamily="calibril.ttf#Calibri Light"   
+                    Text="{Binding Username}" 
+                     HeightRequest = "40"                   
+                    />
+            </StackLayout>
+
+           
+
+            <StackLayout  Grid.Row="1">
+                <Button Text="Enviar Código" Command="{Binding SendCodeCommand}"></Button>
+            </StackLayout>
+
+
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

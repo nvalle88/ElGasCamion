@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:tk="clr-namespace:TK.CustomMap;assembly=TK.CustomMap"
+             xmlns:dsControl="clr-namespace:ElGasCamion.Controls"
+             NavigationPage.HasNavigationBar="True"
+             x:Class="ElGasCamion.Pages.MapaPage">
+    <!--<ContentPage.ToolbarItems>
+        <ToolbarItem Name="MenuItem2" Order="Primary" Text="Nº tanques vendidos" Priority="0" />
+        <ToolbarItem Name="MenuItem1" Order="Primary" Text="{Binding Vendidos}" Priority="0" />
+    </ContentPage.ToolbarItems>-->
+    <ContentPage.Content>
+        
+        <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+            <tk:TKCustomMap 
+                x:Name="mymap"
+                VerticalOptions="FillAndExpand"
+                HorizontalOptions="FillAndExpand"
+                MinimumHeightRequest="300"  
+                MinimumWidthRequest="300"
+                IsShowingUser="True" 
+                IsClusteringEnabled="False"
+                MapType="Street"
+                MapRegion="{Binding CenterSearch}"
+                Pins="{Binding Locations}" 
+                PinSelectedCommand="{Binding PinSelected}"           
+                MapClickedCommand="{Binding PinUnselected}"
+                SelectedPin="{Binding MyPin}" 
+                Circles="{Binding TkCircle}"
+                Routes="{Binding Routes}"
+                
+                RouteCalculationFinished="TKCustomMap_RouteCalculationFinished"
+                RouteCalculationFailed="TKCustomMap_RouteCalculationFailed"
+                />
+            <dsControl:FilterMenu x:Name="Menu" 
+                                  IsVisible="{Binding VerMenu}"
+                                  Command="{Binding ItemSelected}"
+                                  Text="{Binding Path=BindingContext.TapItem, Mode=TwoWay}"
+                                  HorizontalOptions="Center" 
+                                  VerticalOptions="End" 
+                                  TranslationY="48" 
+                                  >
+            </dsControl:FilterMenu>
+            <StackLayout BackgroundColor="Transparent" IsVisible="{Binding VerCompra}" Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Start" >
+                <Button Text="Aplicar" Command="{Binding AplicarCommand}" FontFamily="calibril.ttf#Calibri Light" FontSize="Large" BorderRadius="30" BackgroundColor="#0072C6" TextColor="White"></Button>
+                <Button Text="No Aplicar" Command="{Binding NoAplicarCommand}" FontFamily="calibril.ttf#Calibri Light" FontSize="Large" BorderRadius="30" BackgroundColor="#0072C6" TextColor="White"></Button>
+            </StackLayout>
+
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

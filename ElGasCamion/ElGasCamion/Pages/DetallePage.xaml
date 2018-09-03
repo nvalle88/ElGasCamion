@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ElGasCamion.Pages.DetallePage">
+    <ContentPage.Content>
+        <StackLayout>
+
+            <Label Text="Nombres" FontFamily="calibril.ttf#Calibri Light"/>
+            <Entry Text="{Binding Detalle.NombreCliente}" FontFamily="calibril.ttf#Calibri Light"></Entry>
+            <Label Text="Dirección" FontFamily="calibril.ttf#Calibri Light"/>
+            <Entry Text="{Binding Direccion}" FontFamily="calibril.ttf#Calibri Light"></Entry>
+            <Label Text="Télefono" FontFamily="calibril.ttf#Calibri Light"/>
+            <Entry Text="{Binding Detalle.Telefono}" FontFamily="calibril.ttf#Calibri Light"></Entry>
+            <Label Text="Nro. de tanques a entregar" FontFamily="calibril.ttf#Calibri Light"/>
+            <Entry Text="{Binding Detalle.Cantidad}" FontFamily="calibril.ttf#Calibri Light"></Entry>
+            <Label Text="Valor a cobrar" FontFamily="calibril.ttf#Calibri Light"/>
+            <Entry Text="{Binding Detalle.ValorTotal}" FontFamily="calibril.ttf#Calibri Light"></Entry>
+
+            <StackLayout Orientation="Horizontal"
+                         VerticalOptions="End" 
+                         HorizontalOptions="Center" 
+                         >
+
+                <Button BorderRadius="30" 
+                        Text="ENTREGAR" 
+                        VerticalOptions="End" 
+                        HorizontalOptions="Center" 
+                        WidthRequest="200"  
+                        HeightRequest="50" 
+                        BackgroundColor="Blue"
+                    FontFamily="calibril.ttf#Calibri Light"
+                    FontSize="Large"
+                        TextColor="White" 
+                        Command="{Binding OkCommand}"/>
+                <Button BorderRadius="30" 
+                        Text="CANCELAR PEDIDO" 
+                        VerticalOptions="End" 
+                        HorizontalOptions="Center" 
+                        WidthRequest="200"  
+                        HeightRequest="50" 
+                        BackgroundColor="Blue"
+                    FontFamily="calibril.ttf#Calibri Light"
+                    FontSize="Large"
+                        TextColor="White" 
+                        Command="{Binding CancelCommand}"/>
+            </StackLayout>
+            <!--<Button BorderRadius="30" 
+                        Text="CANCELAR" 
+                        VerticalOptions="End" 
+                        HorizontalOptions="Center" 
+                        WidthRequest="200"  
+                        HeightRequest="50" 
+                        BackgroundColor="Blue" 
+                        TextColor="White" 
+                        Command="{Binding OkCommand}"/>-->
+            
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:tk="clr-namespace:TK.CustomMap;assembly=TK.CustomMap"
+             x:Class="ElGasCamion.Pages.Confirmacion">
+    <ContentPage.Content>
+        <StackLayout>
+            
+            <tk:TKCustomMap HeightRequest="300"                 
+                            Pins="{Binding Locations}" 
+                            MapRegion="{Binding CenterSearch}"
+                             IsClusteringEnabled="False"
+
+></tk:TKCustomMap>
+            <Label Text="Dirección" FontFamily="calibril.ttf#Calibri Light"></Label>
+            <Label Text="{Binding Direccion}" FontFamily="calibril.ttf#Calibri Light" FontSize="Large" FontAttributes="Bold" ></Label>
+
+            <Label Text="Ingrese el número de tanques requeridos" FontFamily="calibril.ttf#Calibri Light"></Label>
+            <Entry Placeholder="Cantidad" Text="{Binding Cilindros,Mode=TwoWay}" FontFamily="calibril.ttf#Calibri Light" Keyboard="Numeric" ></Entry>
+            <Label Text="Total del pedido" FontFamily="calibril.ttf#Calibri Light" ></Label>
+            <Label FontSize="Large" FontAttributes="Bold" Text="{Binding Valor}" FontFamily="calibril.ttf#Calibri Light"></Label>
+
+            <Button BorderRadius="30" 
+                        FontFamily="calibril.ttf#Calibri Light"
+                        Text="Confirmar" 
+                        VerticalOptions="End" 
+                        HorizontalOptions="Center" 
+                        WidthRequest="200"  
+                        HeightRequest="50" 
+                        BackgroundColor="#0072C6" 
+                        TextColor="White" 
+                        TranslationY="-10" 
+                        Command="{Binding OkCommand}">
+            </Button>
+
+
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
